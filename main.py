@@ -14,8 +14,8 @@ try:
         tools.clear()
         match opcion:
             case "Salir": # [-1] en una lista toma el ultimo elemento
-                print("Buena suerte en la seleccion! 👋🏽")
-                time.sleep(1.5)
+                print("Buena suerte! 👍🙌")
+                time.sleep(1.1)
                 break
             case "Materias":
                 user_input = input("Clave de la asignatura (ej. MAT0140): ").replace(" ","").upper()
@@ -38,8 +38,7 @@ try:
                         tools.imprimir_informacion_materias(datos)
                     else:
                         tools.imprimir_informacion_materias(datos,True)
-
-                    break
+                        
                 else:
                     datos = respuesta.json()["pageProps"]["teacher"]
                     tools.profesores(datos)

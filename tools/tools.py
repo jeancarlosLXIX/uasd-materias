@@ -1,9 +1,11 @@
 from os import system, name,path
 import csv
+import webbrowser
 
 # CONSTANTES
 URL_MATERIAS = "https://www.nuevosemestre.com/_next/data/XbStiufFj8jq_WMgi_X0A/programacion-docente/xxx.json"
 URL_MAESTRO = "https://www.nuevosemestre.com/_next/data/XbStiufFj8jq_WMgi_X0A/profesor/xxx.json"
+VER_OPINIONES = "https://www.nuevosemestre.com/profesor/"
 HEADER = ["NRC", "Profesor", "Materia", "Seccion","Horario","Campus"]
 
 # FUNCIONES
@@ -44,12 +46,12 @@ def imprimir_informacion_materias(materias:list,solo_virtuales:bool=False):
         opciones = print_info(solo_v)
     else:
         opciones = print_info(materias)
-    continuar = input("Desea guardar candidato?(si o no): ").lower()
-    if continuar == "si":
-        seleccionados = input("Elija uno o varios numeros separados por una coma: ")
+    continuar = input("Desea guardar candidato?(escribir si o s): ").lower()
+    if continuar == "si" or continuar == "s":
+        seleccionados = input("\nElija uno o varios numeros separados por un espacio: ")
         numeros = []
         if seleccionados and (seleccionados != " "):
-            for element in seleccionados.split(','):
+            for element in seleccionados.split(' '):
                 try:
                     numeros.append(int(element))
                 except ValueError:
@@ -74,7 +76,11 @@ def profesores(teacher:list):
         print(f"Evaluando estudiantes: {statistics['fair_rate']}%")
         print(f"Tomarian clases otra vez:  {statistics['takeagain_rate']}%")
         print(f"Asistencia: {statistics['asistance_rate']}%")
-    input("\nPreciona enter para continuar...")
+
+        res = input("\nDesea ver opiniones?(si o s): ").lower()
+        if res == "si" or res == "s":
+            formato = VER_OPINIONES + teacher['name'].replace(" ","-")
+            webbrowser.open_new_tab(formato)
 
 
 def guardar_candidatos(obj:dict,elegidos:list[int]):
