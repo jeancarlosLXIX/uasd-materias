@@ -3,13 +3,13 @@ import csv
 import webbrowser
 
 # CONSTANTES
-URL_MATERIAS = "https://www.nuevosemestre.com/_next/data/XbStiufFj8jq_WMgi_X0A/programacion-docente/xxx.json"
-URL_MAESTRO = "https://www.nuevosemestre.com/_next/data/XbStiufFj8jq_WMgi_X0A/profesor/xxx.json"
+URL_MATERIAS = "https://www.nuevosemestre.com/_next/data/0y9kul0wC-LEIBHCRInlK/programacion-docente/xxx.json"
+URL_MAESTRO = "https://www.nuevosemestre.com/_next/data/0y9kul0wC-LEIBHCRInlK/profesor/xxx.json"
 VER_OPINIONES = "https://www.nuevosemestre.com/profesor/"
 HEADER = ["NRC", "Profesor", "Materia", "Seccion","Horario","Campus"]
 
 # FUNCIONES
-def print_info(datos:list,ver:bool=True):
+def print_info(datos,ver:bool=True):
     """Funcion para imprimir los datos pedidos, retorna un diccionario de canditados
     que sera usado para luego guardarlos si es necesario"""
     candidatos = {}
